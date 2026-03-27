@@ -13,7 +13,7 @@ void healthSystem();
 
 // Globals
 Monster mnst[50];
-int lvl = 1;
+int lvl = 0;
 
 // Update Function
 void Update()
@@ -36,9 +36,9 @@ int main()
     ToggleFullscreen();
 
     // Initializing Monsters
-    for (int i = 1; i <= 50; i++)
+    for (int i = 0; i < 50; i++)
     {
-        mnst[i].createMonster(i, i * 100);
+        mnst[i].createMonster(i + 1, (i + 1) * 100);
         mnst[i].screendimension(ScreenWidth, ScreenHeight);
     }
 
@@ -55,7 +55,7 @@ int main()
     }
 
     // Cleaning
-    for (int i = 1; i <= 50; i++)
+    for (int i = 0; i < 50; i++)
     {
         UnloadTexture(mnst[i].monsterTexture());
     }
@@ -69,7 +69,7 @@ int main()
 
 void drawElements()
 {
-    if (lvl == mnst[lvl].monsterNumber())
+    if (lvl + 1 == mnst[lvl].monsterNumber())
     {
         mnst[lvl].drawRes();
     }
@@ -85,7 +85,7 @@ void Controls()
 
 void healthSystem()
 {
-    if (mnst[lvl].monsterHealth() == 0)
+    if (mnst[lvl].monsterHealth() == 0 && lvl < 49)
     {
         lvl++;
     }

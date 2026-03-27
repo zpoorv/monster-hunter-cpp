@@ -82,7 +82,7 @@ public:
         return health;
     }
 
-    int monsterHealthchanger(int he_lth)
+    void monsterHealthchanger(int he_lth)
     {
         health = he_lth;
     }
